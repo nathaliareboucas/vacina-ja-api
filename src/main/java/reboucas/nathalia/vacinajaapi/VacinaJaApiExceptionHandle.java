@@ -18,6 +18,8 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import reboucas.nathalia.vacinajaapi.models.Erro;
+import reboucas.nathalia.vacinajaapi.services.exceptions.CpfCadastradoException;
+import reboucas.nathalia.vacinajaapi.services.exceptions.MenorDeIdadeException;
 
 @RestController
 @ControllerAdvice
@@ -47,6 +49,24 @@ public class VacinaJaApiExceptionHandle extends ResponseEntityExceptionHandler{
 		Erro erro = new Erro(mensagemUsuario, mensagemDesenvolvedor, System.currentTimeMillis());
 		
 		return handleExceptionInternal(ex, erro, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+	}
+	
+	@ExceptionHandler(CpfCadastradoException.class)
+	public ResponseEntity<Object> handleCpfCadastradoException(CpfCadastradoException ex,
+			WebRequest request) {	
+		
+		Erro erro = new Erro(ex.getMessage(), ex.getMessage(), System.currentTimeMillis());
+		
+		return handleExceptionInternal(ex, erro, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+	}
+	
+	@ExceptionHandler(MenorDeIdadeException.class)
+	public ResponseEntity<Object> handleMenorDeIdadeException(MenorDeIdadeException ex,
+			WebRequest request) {	
+		
+		Erro erro = new Erro(ex.getMessage(), ex.getMessage(), System.currentTimeMillis());
+		
+		return handleExceptionInternal(ex, erro, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 	}
 	
 	private List<Erro> criarListaDeErros(BindingResult bindingResult) {

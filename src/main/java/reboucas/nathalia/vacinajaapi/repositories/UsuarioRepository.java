@@ -7,5 +7,7 @@ import reboucas.nathalia.vacinajaapi.models.entities.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
+	
+	Usuario findByCpf(String cpf);
 
 }

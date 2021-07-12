@@ -20,7 +20,6 @@ public class UsuarioDTOTest {
 				.email("teste@email.com")
 				.cpf("123.456.789-12")
 				.dataNascimento(LocalDate.of(1990, 3, 21))
-				.municipioCodExterno(1L)
 				.municipio("Fortaleza")
 				.dataCadastro(LocalDate.now())
 				.build();
@@ -35,8 +34,6 @@ public class UsuarioDTOTest {
 			() -> assertEquals("teste@email.com", usuario.getEmail()),
 			() -> assertEquals("123.456.789-12", usuario.getCpf()),
 			() -> assertNotNull(usuario.getDataNascimento()),
-			() -> assertNotNull(usuario.getMunicipioCodExterno()),
-			() -> assertEquals(1, usuario.getMunicipioCodExterno().intValue()),
 			() -> assertEquals("Fortaleza", usuario.getMunicipio()),
 			() -> assertNotNull(usuario.getDataCadastro()));
 	}

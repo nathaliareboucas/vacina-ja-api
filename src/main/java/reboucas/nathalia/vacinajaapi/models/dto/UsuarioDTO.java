@@ -47,9 +47,6 @@ public class UsuarioDTO {
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataNascimento;
 	
-	@NotNull(message = "Identificador do município é obrigatório")
-	private Long municipioCodExterno;
-	
 	@NotBlank(message = "Município é obrigatório")
 	private String municipio;
 	
@@ -63,7 +60,6 @@ public class UsuarioDTO {
 			.email(this.email)
 			.cpf(this.cpf)
 			.dataNascimento(this.dataNascimento)
-			.municipioCodExterno(this.municipioCodExterno)
 			.municipio(this.municipio)
 			.dataCadastro(this.dataCadastro)
 			.build();

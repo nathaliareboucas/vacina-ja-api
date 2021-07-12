@@ -1,6 +1,8 @@
 package reboucas.nathalia.vacinajaapi.models.entities;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,9 +46,6 @@ public class Usuario {
 	@Column(name = "DATA_NASCIMENTO")
 	private LocalDate dataNascimento;
 	
-	@Column(name = "MUNICIPIO_COD_EXTERNO")
-	private Long municipioCodExterno;
-	
 	@Column(name = "MUNICIPIO")
 	private String municipio;
 	
@@ -60,10 +59,20 @@ public class Usuario {
 			.email(this.email)
 			.cpf(this.cpf)
 			.dataNascimento(this.dataNascimento)
-			.municipioCodExterno(this.municipioCodExterno)
 			.municipio(this.municipio)
 			.dataCadastro(this.dataCadastro)
 			.build();
+	}
+	
+	public int getIdade() {
+        if (Objects.nonNull(this.dataNascimento)) {
+            return Period.between(this.dataNascimento, LocalDate.now()).getYears();
+        }
+        return 0;
+    }
+	
+	public boolean menorIdade() {
+		return getIdade() < 18;
 	}
 
 }
