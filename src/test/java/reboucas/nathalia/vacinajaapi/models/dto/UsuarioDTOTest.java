@@ -1,6 +1,7 @@
 package reboucas.nathalia.vacinajaapi.models.dto;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
@@ -22,6 +23,7 @@ public class UsuarioDTOTest {
 				.dataNascimento(LocalDate.of(1990, 3, 21))
 				.municipio("Fortaleza")
 				.dataCadastro(LocalDate.now())
+				.processado(false)
 				.build();
 		
 		final Usuario usuario = usuarioDTO.toEntity();
@@ -35,6 +37,7 @@ public class UsuarioDTOTest {
 			() -> assertEquals("123.456.789-12", usuario.getCpf()),
 			() -> assertNotNull(usuario.getDataNascimento()),
 			() -> assertEquals("Fortaleza", usuario.getMunicipio()),
+			() -> assertFalse(usuario.isProcessado()),
 			() -> assertNotNull(usuario.getDataCadastro()));
 	}
 

@@ -52,6 +52,8 @@ public class UsuarioDTO {
 	
 	@JsonIgnore
 	private LocalDate dataCadastro;
+	
+	private boolean processado;
 		
 	public Usuario toEntity() {		
 		return Usuario.builder()
@@ -62,6 +64,7 @@ public class UsuarioDTO {
 			.dataNascimento(this.dataNascimento)
 			.municipio(this.municipio)
 			.dataCadastro(this.dataCadastro)
+			.processado(this.processado)
 			.build();
 
 	}

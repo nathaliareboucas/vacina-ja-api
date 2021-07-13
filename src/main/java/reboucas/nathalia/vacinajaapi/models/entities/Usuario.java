@@ -52,6 +52,9 @@ public class Usuario {
 	@Column(name = "DATA_CADASTRO")
 	private LocalDate dataCadastro;
 	
+	@Column(name = "PROCESSADO")
+	private boolean processado;
+	
 	public UsuarioDTO toDTO() {
 		return UsuarioDTO.builder()
 			.id(this.id)
@@ -61,6 +64,7 @@ public class Usuario {
 			.dataNascimento(this.dataNascimento)
 			.municipio(this.municipio)
 			.dataCadastro(this.dataCadastro)
+			.processado(this.processado)
 			.build();
 	}
 	
