@@ -15,15 +15,16 @@ import lombok.Setter;
 @Setter
 public class DashboardDTO {
 	
-	private Long usuarioId;
+	private String usuarioId;
 	private boolean usuarioProcessado;
+	private boolean usuarioCadastrado;
 	private Integer totalCadastrado;
 	private Integer totalVacinado; // total de registros processados
 	private Integer totalNaoVacinado; // total de registros que ainda não foram processados
 	private int posicaoUsuarioNaFila;
 
-	public Integer calcularPosicaoUsuarioNaFila(List<Long> idsUsuariosParaVacinar) {
-		if (usuarioProcessado) {
+	public Integer calcularPosicaoUsuarioNaFila(List<String> idsUsuariosParaVacinar) {
+		if (usuarioCadastrado && usuarioProcessado) {
 			posicaoUsuarioNaFila = -1; // Já recebeu a notificação = já se vacinou
 		}
 		

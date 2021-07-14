@@ -29,7 +29,7 @@ import reboucas.nathalia.vacinajaapi.models.entities.Usuario;
 public class UsuarioDTO {
 
 	
-	private Long id;
+	private String id;
 	
 	@NotBlank(message = "Nome é obrigatório")
 	private String nome;
@@ -63,8 +63,8 @@ public class UsuarioDTO {
 			.cpf(this.cpf)
 			.dataNascimento(this.dataNascimento)
 			.municipio(this.municipio)
-			.dataCadastro(this.dataCadastro)
-			.processado(this.processado)
+			.dataCadastro(LocalDate.now())
+			.processado(false)
 			.build();
 
 	}

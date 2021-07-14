@@ -16,7 +16,7 @@ public class UsuarioDTOTest {
 	@Test
 	public void deveConverterDTOEmEntidade() {		
 		final UsuarioDTO usuarioDTO = UsuarioDTO.builder()
-				.id(1L)
+				.id("f5456-f54a-bb")
 				.nome("Usuário Teste")
 				.email("teste@email.com")
 				.cpf("123.456.789-12")
@@ -31,7 +31,7 @@ public class UsuarioDTOTest {
 		assertAll("usuario",
 			() -> assertNotNull(usuario),
 			() -> assertNotNull(usuario.getId()),
-			() -> assertEquals(1, usuario.getId().intValue()),
+			() -> assertEquals("f5456-f54a-bb", usuario.getId()),
 			() -> assertEquals("Usuário Teste", usuario.getNome()),
 			() -> assertEquals("teste@email.com", usuario.getEmail()),
 			() -> assertEquals("123.456.789-12", usuario.getCpf()),

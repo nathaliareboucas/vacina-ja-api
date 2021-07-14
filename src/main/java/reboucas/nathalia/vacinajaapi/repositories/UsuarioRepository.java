@@ -12,5 +12,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>, Usuario
 	
 	Usuario findByCpf(String cpf);
 	List<Usuario> findByProcessado(boolean processado);
+	Usuario findById(String usuarioId);
 
 }

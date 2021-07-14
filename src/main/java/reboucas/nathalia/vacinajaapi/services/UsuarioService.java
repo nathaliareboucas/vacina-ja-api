@@ -1,6 +1,5 @@
 package reboucas.nathalia.vacinajaapi.services;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -21,8 +20,6 @@ public class UsuarioService {
 	private UsuarioRepository repository;
 	
 	public Usuario salvar(Usuario usuario) {
-		usuario.setDataCadastro(LocalDate.now());
-		usuario.setProcessado(false);
 		Usuario usuarioExistente = repository.findByCpf(usuario.getCpf());
 		
 		if (usuario.menorIdade()) {
@@ -36,7 +33,13 @@ public class UsuarioService {
 		return repository.save(usuario);
 	}
 
-	public DashboardDTO getDadosDashboardPor(Long usuarioId) {
+	public DashboardDTO getDadosDashboardPor(String usuarioId) {
+		Usuario usuarioExistente = repository.findById(usuarioId);
+		
+		if (Objects.isNull(usuarioExistente)) {
+			return DashboardDTO.builder().usuarioCadastrado(false).build();
+		}
+		
 		final Integer totalCadastrado = (int) repository.count();
 		final Integer totalVacinado = repository.getTotalByProcessado(true);
 		final Integer totalNaoVacinado = repository.getTotalByProcessado(false);
@@ -46,9 +49,10 @@ public class UsuarioService {
 				.totalCadastrado(totalCadastrado)
 				.totalVacinado(totalVacinado)
 				.totalNaoVacinado(totalNaoVacinado)
+				.usuarioCadastrado(true)
 				.build();
 		
-		final List<Long> idsUsuariosParaVacinar = repository.findByProcessado(false).stream()
+		final List<String> idsUsuariosParaVacinar = repository.findByProcessado(false).stream()
 			.map(Usuario::getId)
 			.collect(Collectors.toList());
 		

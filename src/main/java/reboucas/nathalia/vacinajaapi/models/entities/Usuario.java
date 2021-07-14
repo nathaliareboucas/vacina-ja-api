@@ -6,8 +6,6 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -29,10 +27,9 @@ import reboucas.nathalia.vacinajaapi.models.dto.UsuarioDTO;
 @EqualsAndHashCode(of = {"id"})
 public class Usuario {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id	
 	@Column(name = "ID")
-	private Long id;
+	private String id;
 	
 	@Column(name = "NOME")
 	private String nome;

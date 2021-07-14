@@ -1,5 +1,6 @@
 package reboucas.nathalia.vacinajaapi.resources;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +27,16 @@ public class UsuarioResource {
 	@Autowired
 	private UsuarioService service;
 	
+	@RolesAllowed("user")
 	@PostMapping
 	public ResponseEntity<UsuarioDTO> salvar(@RequestBody @Valid UsuarioDTO usuarioDTO) {
 		final Usuario usuarioCriado = service.salvar(usuarioDTO.toEntity());
 		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioCriado.toDTO());
 	}
 	
-	@GetMapping(value = "{id}/dashboard")
-	public ResponseEntity<DashboardDTO> getDadosDashboardPor(@PathVariable Long id) {
+	@RolesAllowed("user")
+	@GetMapping(value = "/{id}/dashboard")
+	public ResponseEntity<DashboardDTO> getDadosDashboardPor(@PathVariable String id) {
 		return ResponseEntity.status(HttpStatus.OK).body(service.getDadosDashboardPor(id));
 	}
 
