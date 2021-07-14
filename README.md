@@ -2,9 +2,8 @@
 API Vacinação COVID-19
 
 ## Descricão
-Sistema de cadastro para vacinação contra o COVID-19, onde ao se cadastrar o usuário entrará em uma fila de vacinação
-
-ordenada por data de cadastro. O projeto foi desenvolvido utilizando as seguintes tecnologias:
+Sistema de cadastro para vacinação contra o COVID-19, onde ao se cadastrar o usuário entrará em uma fila de vacinação ordenada 
+por data de cadastro. O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 * Spring boot - backend
 
@@ -27,7 +26,7 @@ Acesse o painel administrativo do keycloak com usuario : `admin` e senha `admin`
 
 Na raíz do projeto vacina-ja-api foi disponibilizado o arquivo de configuração do Keycloak, basta importalo pelo painel administrativo.
 
-Forão criados dois usuários:
+Foram criados dois usuários:
 
 * usuário: `teste1@teste.com` | senha: `123456`
 * usuário: `bla@teste.com` | senha: `123456`
