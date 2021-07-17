@@ -33,7 +33,8 @@ public class UsuarioService {
 		return repository.save(usuario);
 	}
 
-	public DashboardDTO getDadosDashboardPor(String usuarioId) {
+	// TODO: Refazer consulta
+	public DashboardDTO getDadosDashboardPor(String usuarioId) {			
 		Usuario usuarioExistente = repository.findById(usuarioId);
 		
 		if (Objects.isNull(usuarioExistente)) {
@@ -59,6 +60,17 @@ public class UsuarioService {
 		dashBoardDTO.calcularPosicaoUsuarioNaFila(idsUsuariosParaVacinar);
 	
 		return dashBoardDTO;
+	}
+	
+	public List<Usuario> getUsuariosNotificar(final int quantidade) {
+		return repository.getByProcessadoWithLimit(false, quantidade);
+	}
+	
+	public void atualizarUsuariosProcessados(final List<Usuario> usuarios) {
+		if (Objects.nonNull(usuarios) && !usuarios.isEmpty()) {
+			usuarios.forEach(usuario -> usuario.setProcessado(true));
+			repository.saveAll(usuarios);
+		}
 	}
 
 }

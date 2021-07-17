@@ -31,13 +31,16 @@ public class UsuarioDTO {
 	
 	private String id;
 	
+	@NotNull
 	@NotBlank(message = "Nome é obrigatório")
 	private String nome;
 	
+	@NotNull
 	@Email(message = "Email inválido")
 	@NotBlank(message = "Email é obrigatório")
 	private String email;
 	
+	@NotNull
 	@NotBlank(message = "CPF é obrigatório")
 	@Length(min = 14, max =14, message = "CPF inválido")
 	private String cpf;
@@ -47,6 +50,7 @@ public class UsuarioDTO {
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataNascimento;
 	
+	@NotNull
 	@NotBlank(message = "Município é obrigatório")
 	private String municipio;
 	
