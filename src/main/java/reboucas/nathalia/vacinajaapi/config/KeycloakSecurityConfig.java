@@ -1,4 +1,4 @@
-package reboucas.nathalia.vacinajaapi;
+package reboucas.nathalia.vacinajaapi.config;
 
 import org.keycloak.adapters.KeycloakConfigResolver;
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;

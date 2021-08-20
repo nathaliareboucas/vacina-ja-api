@@ -1,4 +1,4 @@
-package reboucas.nathalia.vacinajaapi;
+package reboucas.nathalia.vacinajaapi.handlers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ import reboucas.nathalia.vacinajaapi.services.exceptions.MenorDeIdadeException;
 
 @RestController
 @ControllerAdvice
-public class VacinaJaApiExceptionHandle extends ResponseEntityExceptionHandler{
+public class VacinaJaApiExceptionHandler extends ResponseEntityExceptionHandler{
 	
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
