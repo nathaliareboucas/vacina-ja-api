@@ -24,14 +24,16 @@ para subir um container Keycloak (necessário ter o docker instalado).
 
 Acesse o painel administrativo do keycloak com usuario : `admin` e senha `admin`.
 
-Na raíz do projeto vacina-ja-api foi disponibilizado o arquivo de configuração do Keycloak, basta importalo pelo painel administrativo.
+Na raíz do projeto vacina-ja-api foi disponibilizado o arquivo de configuração do Keycloak, basta importá-lo pelo painel administrativo.
 
 Foram criados dois usuários:
 
 * usuário: `teste1@teste.com` | senha: `123456`
 * usuário: `bla@teste.com` | senha: `123456`
 
-Baixados os projetos e feita a configuração do Keycloak, vamos executar a aplicação.
+Para configrar as notificações de agendamento é necessário adicionar o remetente em `EmailService.java` e em `application.properties`. Caso deseje alterar a quantidade de usuários que serão agendados, bem como o horário do envio de email de notificação, realize as alterações em `AgendamentoTask.java`.
+
+Baixados os projetos e feita a configuração de envio de email e do Keycloak, vamos executar a aplicação.
 
 Na raíz do projeto <b>vacina-ja-api</b> execute os seguinte comandos:
 
