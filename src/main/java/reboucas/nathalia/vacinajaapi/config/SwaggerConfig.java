@@ -33,7 +33,7 @@ public class SwaggerConfig {
 				"API do sistema de cadasto para vacinação COVID-19", 
 				"v1", 
 				"Termos de serviço: ----", 
-				new Contact("Nathália Rebouças", "github.com/nathaliareboucas", "nathreboucas5@gmail.com"),
+				new Contact("Nathália Rebouças", "https://github.com/nathaliareboucas", "nathreboucas5@gmail.com"),
 				"Licença: MIT", 
 				"URL Licança: ----", 
 				Collections.emptyList());
